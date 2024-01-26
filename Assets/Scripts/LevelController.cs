@@ -21,9 +21,14 @@ public class LevelController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision != null && collision.gameObject.CompareTag("Player"))
+        if(collision != null && collision.gameObject.CompareTag("LevelEnd"))
         {
             Debug.Log("Player completed level");
+            SceneManager.LoadScene("MainScene");
+        }
+        else if (collision != null && collision.gameObject.CompareTag("GameOver"))
+        {
+            Debug.Log("Level over ");
             SceneManager.LoadScene("MainScene");
         }
     }
