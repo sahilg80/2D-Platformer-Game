@@ -6,6 +6,7 @@ TagManager:
   tags:
   - GameOver
   - LevelEnd
+  - Collectible
   layers:
   - Default
   - TransparentFX
