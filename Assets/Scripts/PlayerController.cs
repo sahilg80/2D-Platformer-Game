@@ -1,6 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -11,8 +11,6 @@ public class PlayerController : MonoBehaviour
     private float speed;
     [SerializeField]
     private float jumpForce;
-    //[SerializeField]
-    //private GameObject m_Player;
     private Rigidbody2D m_Rigidbody2D;
     private Collider2D m_Collider;
     [SerializeField]
@@ -47,10 +45,18 @@ public class PlayerController : MonoBehaviour
     private void ControlHorizontalMovement()
     {
         float horizontal = Input.GetAxis("Horizontal");
-        if (m_Animator != null)
+        if ( m_Animator != null )
         {
             if (horizontal == 0) { return; }
-            m_Animator.SetFloat("Speed", Mathf.Abs(horizontal));
+            if(IsGrounded())
+            {
+                m_Animator.SetFloat("Speed", Mathf.Abs(horizontal));
+            }
+            else
+            {
+                m_Animator.SetFloat("Speed", 0);
+            }
+
             float scaleX = transform.localScale.x;
             if (horizontal < 0)
             {
@@ -94,7 +100,7 @@ public class PlayerController : MonoBehaviour
 
     private bool IsGrounded()
     {
-        return Physics2D.BoxCast(m_Collider.bounds.center, m_Collider.bounds.size, 0, Vector2.down, 0.01f, jumpableLayers);
+        return Physics2D.BoxCast(m_Collider.bounds.center, m_Collider.bounds.size, 0, Vector2.down, 0.02f, jumpableLayers);
     }
 
     public void GetCollectible(int value)
@@ -103,4 +109,23 @@ public class PlayerController : MonoBehaviour
         m_ScoreController.SetScoreInUI(score);
     }
 
+    public void Attack()
+    {
+        m_Animator.SetBool("IsHurt", true);
+    }
+
+    public void Died()
+    {
+        m_Animator.SetBool("IsDied", true);
+    }
+
+    public void ReloadScene()
+    {
+        Invoke("Reload", 1f);
+    }
+
+    private void Reload()
+    {
+        SceneManager.LoadScene("MainScene");
+    }
 }
