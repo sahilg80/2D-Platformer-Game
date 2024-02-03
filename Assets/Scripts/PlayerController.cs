@@ -6,6 +6,8 @@ public class PlayerController : MonoBehaviour
 {
     private Animator m_Animator;
     [SerializeField]
+    private SceneController sceneController;
+    [SerializeField]
     ScoreController m_ScoreController;
     [SerializeField]
     private float speed;
@@ -126,6 +128,6 @@ public class PlayerController : MonoBehaviour
 
     private void Reload()
     {
-        SceneManager.LoadScene("MainScene");
+        sceneController.LoadMainScene();
     }
 }
