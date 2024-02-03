@@ -123,11 +123,7 @@ public class PlayerController : MonoBehaviour
 
     public void ReloadScene()
     {
-        Invoke("Reload", 1f);
+        m_ScoreController.ShowGameoverPanel();
     }
 
-    private void Reload()
-    {
-        sceneController.LoadMainScene();
-    }
 }
