@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class DeathCollider : MonoBehaviour
 {
+    [SerializeField]
+    private SceneController sceneController;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +19,7 @@ public class DeathCollider : MonoBehaviour
         if (collision != null && playerController != null)
         {
             Debug.Log("Player died game over");
-            SceneManager.LoadScene("MainScene");
+            sceneController.LoadMainScene();
         }
     }
 }

@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class LevelCompleteCollider : MonoBehaviour
 {
     [SerializeField]
+    private SceneController sceneController;
     private void Awake()
     {
 
@@ -28,7 +29,7 @@ public class LevelCompleteCollider : MonoBehaviour
         if (collision != null && playerController != null)
         {
             Debug.Log("Player completed level");
-            SceneManager.LoadScene("MainScene");
+            sceneController.LoadMainScene();
         }
     }
 }
