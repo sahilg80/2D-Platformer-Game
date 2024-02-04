@@ -32,8 +32,8 @@ public class ScoreController : MonoBehaviour
 
     private void GameOverUI()
     {
-
         gamePanel.SetActive(false);
         gameOverPanel.SetActive(true);
+        Time.timeScale = 0f;
     }
 }
