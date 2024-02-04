@@ -1,14 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {
+    private int totalScenes;
+    private Scene currentScene;
     // Start is called before the first frame update
     void Start()
     {
-        Time.timeScale = 1f;
+        //Time.timeScale = 1f;
+        totalScenes = 4;
+        currentScene = SceneManager.GetActiveScene();
     }
 
     // Update is called once per frame
@@ -17,19 +20,27 @@ public class SceneController : MonoBehaviour
         
     }
 
-    public void QuitGame()
-    {
-        Debug.Log("Quit the app");
-        Application.Quit();
-    }
 
     public void LoadLobbyScene()
     {
         SceneManager.LoadScene("LobbyScene");
     }
 
-    public void LoadMainScene()
+    public void ReLoadScene()
     {
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene(currentScene.buildIndex);
+    }
+    public void LoadNextLevel()
+    {
+        Debug.Log("index " + currentScene.buildIndex);
+        //currentScene = SceneManager.GetActiveScene();
+        if (currentScene.buildIndex > 3)
+        {
+            Debug.Log("Game completed");
+        }
+        else
+        {
+            SceneManager.LoadScene(currentScene.buildIndex+1);
+        }
     }
 }

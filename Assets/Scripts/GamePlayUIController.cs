@@ -1,8 +1,9 @@
 
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class ScoreController : MonoBehaviour
+public class GamePlayUIController : MonoBehaviour
 {
     [SerializeField]
     private TextMeshProUGUI scoreText;
@@ -10,12 +11,16 @@ public class ScoreController : MonoBehaviour
     private GameObject gamePanel;
     [SerializeField]
     private GameObject gameOverPanel;
+    [SerializeField]
+    private TextMeshProUGUI levelNameText;
     // Start is called before the first frame update
-    
+
     private void Start()
     {
         gamePanel.SetActive(true);
         gameOverPanel.SetActive(false);
+        Scene scene = SceneManager.GetActiveScene();
+        levelNameText.SetText(scene.name);
         SetScoreInUI(0);
     }
 
@@ -34,6 +39,6 @@ public class ScoreController : MonoBehaviour
     {
         gamePanel.SetActive(false);
         gameOverPanel.SetActive(true);
-        Time.timeScale = 0f;
+        //Time.timeScale = 0f;
     }
 }

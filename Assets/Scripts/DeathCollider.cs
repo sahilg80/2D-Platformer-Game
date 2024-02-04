@@ -19,7 +19,7 @@ public class DeathCollider : MonoBehaviour
         if (collision != null && playerController != null)
         {
             Debug.Log("Player died game over");
-            sceneController.LoadMainScene();
+            sceneController.ReLoadScene();
         }
     }
 }

@@ -29,7 +29,7 @@ public class LevelCompleteCollider : MonoBehaviour
         if (collision != null && playerController != null)
         {
             Debug.Log("Player completed level");
-            sceneController.LoadMainScene();
+            sceneController.LoadNextLevel();
         }
     }
 }
