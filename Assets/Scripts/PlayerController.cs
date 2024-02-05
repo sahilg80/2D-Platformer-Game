@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private SceneController sceneController;
     [SerializeField]
-    ScoreController m_ScoreController;
+    GamePlayUIController m_GameUIController;
     [SerializeField]
     private float speed;
     [SerializeField]
@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private LayerMask jumpableLayers;
     private int score;
+    public bool isDied { get; private set; }
 
     // Start is called before the first frame update
     void Start()
@@ -30,9 +31,12 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ControlHorizontalMovement();
-        Crouch();
-        ControlJump();
+        if (!isDied)
+        {
+            ControlHorizontalMovement();
+            Crouch();
+            ControlJump();
+        }
     }
 
     private void ControlJump()
@@ -47,7 +51,7 @@ public class PlayerController : MonoBehaviour
     private void ControlHorizontalMovement()
     {
         float horizontal = Input.GetAxis("Horizontal");
-        if ( m_Animator != null )
+        if ( m_Animator != null)
         {
             if (horizontal == 0) { return; }
             if(IsGrounded())
@@ -108,7 +112,7 @@ public class PlayerController : MonoBehaviour
     public void GetCollectible(int value)
     {
         score += value;
-        m_ScoreController.SetScoreInUI(score);
+        m_GameUIController.SetScoreInUI(score);
     }
 
     public void Attack()
@@ -118,12 +122,13 @@ public class PlayerController : MonoBehaviour
 
     public void Died()
     {
+        isDied = true;
         m_Animator.SetBool("IsDied", true);
     }
 
-    public void ReloadScene()
+    public void GameOverScreen()
     {
-        m_ScoreController.ShowGameoverPanel();
+        m_GameUIController.ShowGameoverPanel();
     }
 
 }
