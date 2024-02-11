@@ -40,6 +40,7 @@ public class SceneController : MonoBehaviour
         if (currentScene.buildIndex > 3)
         {
             Debug.Log("Game completed");
+            SceneManager.LoadScene(currentScene.buildIndex + 1);
         }
         else
         {
