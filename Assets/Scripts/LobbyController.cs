@@ -18,6 +18,11 @@ public class LobbyController : MonoBehaviour
 
     public void LoadLevel()
     {
+        if (LevelManager.Instance.GetLevelStatus(levelName) == LevelStatus.Locked)
+        {
+            Debug.Log("can not play level locked");
+            return;
+        }
         Debug.Log("level name index " + (int)levelName);
         SceneManager.LoadScene(levelName.ToString());
     }
