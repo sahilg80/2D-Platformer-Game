@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class DeathCollider : MonoBehaviour
 {
@@ -18,7 +16,7 @@ public class DeathCollider : MonoBehaviour
         PlayerController playerController = collision.gameObject.GetComponent<PlayerController>();
         if (collision != null && playerController != null)
         {
-            Debug.Log("Player died game over");
+            Debug.Log("Player died level over");
             sceneController.ReLoadScene();
         }
     }

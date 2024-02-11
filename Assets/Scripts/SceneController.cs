@@ -1,4 +1,5 @@
 
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -12,6 +13,8 @@ public class SceneController : MonoBehaviour
         //Time.timeScale = 1f;
         totalScenes = 4;
         currentScene = SceneManager.GetActiveScene();
+        
+        Debug.Log(currentScene.buildIndex + " " + currentScene.name);
     }
 
     // Update is called once per frame
@@ -40,6 +43,9 @@ public class SceneController : MonoBehaviour
         }
         else
         {
+            string nextLevel = currentScene.buildIndex.ToString();
+            LevelName levelName = (LevelName)Enum.Parse(typeof(LevelName), nextLevel);
+            LevelManager.Instance.SetLevelStatus(levelName, LevelStatus.Unlocked);
             SceneManager.LoadScene(currentScene.buildIndex+1);
         }
     }
