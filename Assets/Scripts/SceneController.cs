@@ -14,6 +14,7 @@ public class SceneController : MonoBehaviour
         currentScene = SceneManager.GetActiveScene();
         
         Debug.Log(currentScene.buildIndex + " " + currentScene.name);
+        SoundsManager.Instance.PlayClip(Sounds.LevelStart, SoundPlayingType.OneShot);
     }
 
     // Update is called once per frame

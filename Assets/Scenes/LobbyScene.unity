@@ -177,6 +177,12 @@ MonoBehaviour:
     AudioClip: {fileID: 8300000, guid: 4d02d075426b22b44bbdb5c1fd065ec7, type: 3}
   - Type: 4
     AudioClip: {fileID: 8300000, guid: e5cb0976ee7cf93489107ede5175519b, type: 3}
+  - Type: 5
+    AudioClip: {fileID: 8300000, guid: a4dc23583fb1dc84a89049f88b06efe8, type: 3}
+  - Type: 6
+    AudioClip: {fileID: 8300000, guid: 5efaa944cc7cece4996b86725256962b, type: 3}
+  - Type: 7
+    AudioClip: {fileID: 8300000, guid: 68c65aec95671b549be3b900cc305b1e, type: 3}
   BgMusicSource: {fileID: 529853531}
   SoundClipSource: {fileID: 625095616}
 --- !u!1 &179605010
@@ -704,7 +710,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 0.553
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

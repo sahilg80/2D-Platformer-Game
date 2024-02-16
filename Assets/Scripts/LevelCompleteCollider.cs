@@ -29,6 +29,7 @@ public class LevelCompleteCollider : MonoBehaviour
         if (collision != null && playerController != null)
         {
             Debug.Log("Player completed level");
+            SoundsManager.Instance.PlayClip(Sounds.LevelEnd, SoundPlayingType.OneShot);
             sceneController.LoadNextLevel();
         }
     }

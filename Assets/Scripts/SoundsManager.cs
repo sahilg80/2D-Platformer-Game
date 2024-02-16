@@ -13,6 +13,7 @@ public class SoundsManager : MonoBehaviour
     AudioSource BgMusicSource;
     [SerializeField]
     AudioSource SoundClipSource;
+    private Sounds currentSoundPlaying;
 
     private static SoundsManager instance;
     public static SoundsManager Instance { get { return instance; } }
@@ -36,12 +37,18 @@ public class SoundsManager : MonoBehaviour
 
     public void PlayClip(Sounds type, SoundPlayingType playType)
     {
+        //currentSoundPlaying = type;
+        //if(currentSoundPlaying == type && !SoundClipSource.isPlaying) { }
         SoundElement element = soundClips.Where(s => s.Type == type).FirstOrDefault();
         if(element != null)
         {
             if(playType == SoundPlayingType.OneShot)
             {
-                if(!SoundClipSource.isPlaying) SoundClipSource.PlayOneShot(element.AudioClip);
+                if (!SoundClipSource.isPlaying) 
+                {
+                    SoundClipSource.PlayOneShot(element.AudioClip);
+                }
+                
             }
             //if(element.Type == Sounds.BGMusic)
             //{
@@ -83,6 +90,9 @@ public enum Sounds
     Death,
     PlayerMove,
     Jump,
+    LevelStart,
+    LevelEnd,
+    LevelFail,
 }
 
 public enum SoundPlayingType

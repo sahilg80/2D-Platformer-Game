@@ -17,6 +17,7 @@ public class DeathCollider : MonoBehaviour
         if (collision != null && playerController != null)
         {
             Debug.Log("Player died level over");
+            SoundsManager.Instance.PlayClip(Sounds.LevelFail, SoundPlayingType.OneShot);
             sceneController.ReLoadScene();
         }
     }
