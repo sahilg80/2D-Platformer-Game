@@ -1,4 +1,3 @@
-
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -23,20 +22,19 @@ public class SceneController : MonoBehaviour
         
     }
 
-
     public void LoadLobbyScene()
     {
+        SoundsManager.Instance.PlayClip(Sounds.OnClick, SoundPlayingType.OneShot);
         SceneManager.LoadScene("LobbyScene");
     }
 
     public void ReLoadScene()
     {
+        SoundsManager.Instance.PlayClip(Sounds.OnClick, SoundPlayingType.OneShot);
         SceneManager.LoadScene(currentScene.buildIndex);
     }
     public void LoadNextLevel()
     {
-        Debug.Log("index " + currentScene.buildIndex);
-        //currentScene = SceneManager.GetActiveScene();
         if (currentScene.buildIndex > 3)
         {
             Debug.Log("Game completed");
