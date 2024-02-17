@@ -43,6 +43,7 @@ public class PlayerController : MonoBehaviour
     {
         if (m_Animator != null && (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow)) && IsGrounded())
         {
+            SoundsManager.Instance.PlayClip(Sounds.Jump, SoundPlayingType.OneShot);
             TranslateCharacterVertical();
             m_Animator.SetTrigger("Jump");
         }
@@ -56,6 +57,7 @@ public class PlayerController : MonoBehaviour
             if (horizontal == 0) { return; }
             if(IsGrounded())
             {
+                SoundsManager.Instance.PlayClip(Sounds.PlayerMove, SoundPlayingType.OneShot);
                 m_Animator.SetFloat("Speed", Mathf.Abs(horizontal));
             }
             else
@@ -73,6 +75,7 @@ public class PlayerController : MonoBehaviour
                 scaleX = Mathf.Abs(scaleX);
             }
             transform.localScale = new Vector3(scaleX, transform.localScale.y, transform.localScale.z);
+            
             TranslateCharacterHorizontal(horizontal);
         }
     }
@@ -123,6 +126,7 @@ public class PlayerController : MonoBehaviour
     public void Died()
     {
         isDied = true;
+        SoundsManager.Instance.PlayClip(Sounds.Death, SoundPlayingType.OneShot);
         m_Animator.SetBool("IsDied", true);
     }
 

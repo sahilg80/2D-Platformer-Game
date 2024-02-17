@@ -19,12 +19,14 @@ public class LobbyUIController : MonoBehaviour
     // Update is called once per frame
     public void DisableMainMenu()
     {
+        SoundsManager.Instance.PlayClip(Sounds.OnClick, SoundPlayingType.OneShot);
         mainMenuContainer.SetActive(false);
         levelSelectionContainer.SetActive(true);
     }
 
     public void QuitGame()
     {
+        SoundsManager.Instance.PlayClip(Sounds.OnClick, SoundPlayingType.OneShot);
         Debug.Log("Quit the app");
         Application.Quit();
     }

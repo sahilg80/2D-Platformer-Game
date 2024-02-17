@@ -18,6 +18,7 @@ public class LobbyController : MonoBehaviour
 
     public void LoadLevel()
     {
+        SoundsManager.Instance.PlayClip(Sounds.OnClick, SoundPlayingType.OneShot);
         if (LevelManager.Instance.GetLevelStatus(levelName) == LevelStatus.Locked)
         {
             Debug.Log("can not play level locked");
