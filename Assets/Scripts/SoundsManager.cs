@@ -93,8 +93,8 @@ public enum Sounds
     LevelStart,
     LevelEnd,
     LevelFail,
-}
-
+}               
+ 
 public enum SoundPlayingType
 {
     OneShot,

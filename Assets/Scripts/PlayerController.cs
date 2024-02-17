@@ -135,4 +135,9 @@ public class PlayerController : MonoBehaviour
         m_GameUIController.ShowGameoverPanel();
     }
 
+    public void GameEnd()
+    {
+        m_Animator.SetBool("IsDisappear", true);
+    }
+
 }
